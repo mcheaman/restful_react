@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import Results from './Results';
 import './styles.css';
 
 const Search = () => {
@@ -20,6 +21,7 @@ const Search = () => {
           <button onClick={goHome}>Home</button>
           <button onClick={goEnter}>Enter</button>
         </div>
+        <Results/>
     </div>
   )
 };

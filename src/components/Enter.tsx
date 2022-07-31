@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import EnterForm from './EnterForm';
 import './styles.css';
 
 const Enter = () => {
@@ -16,10 +17,11 @@ const Enter = () => {
   return (
     <div className="body">
       <h1>Enter</h1>
-        <div className='nav'>
-          <button onClick={goHome}>Home</button>
-          <button onClick={goSearch}>Search</button>
-        </div>
+      <div className='nav'>
+        <button onClick={goHome}>Home</button>
+        <button onClick={goSearch}>Search</button>
+      </div>
+      <EnterForm/>
     </div>
   )
 };
