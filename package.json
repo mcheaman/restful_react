@@ -1,0 +1,19 @@
+{
+  "name": "restful_react--server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "build": "rm -rf build/ && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcheaman/restful_react.git"
+  },
+  "author": "Mason Heaman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcheaman/restful_react/issues"
+  },
+  "homepage": "https://github.com/mcheaman/restful_react#readme"
+}
