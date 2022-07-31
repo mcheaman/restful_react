@@ -1,26 +1,25 @@
 import { PROPERTY_TYPES } from '@babel/types';
 import React, { Component } from 'react'
-
+import Person from './Person';
 
 interface Props {
     
 }
 
 interface State{
-    firstName: string,
-    lastName: string,
-    occupation?: string,
-    age: string,
+    input: Person,
 }
 
 export default class EnterForm extends React.Component<Props, State> {
     constructor(props: Props){
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            occupation: '',
-            age: '',
+            input: {
+              firstName: '',
+              lastName: '',
+              occupation: '',
+              age: '',
+            },
         };
         
         this.handleChange = this.handleChange.bind(this);
@@ -30,19 +29,23 @@ export default class EnterForm extends React.Component<Props, State> {
         const target = e.target as HTMLInputElement;
         const name = target.name;
         this.setState({
-            ...this.state, 
+          input: {
+            ...this.state.input, 
             [name]: target.value
+          }
         });
     }
     handleSubmit(e: React.FormEvent){
         alert('A Person was submitted ' + JSON.stringify(this.state));
         e.preventDefault();
         this.setState({
+          input: {
             firstName: '',
             lastName: '',
             occupation: '',
             age: '',
-        });
+          },
+      });
         //Make Api call
     }
   render() {
@@ -50,19 +53,19 @@ export default class EnterForm extends React.Component<Props, State> {
         <form className="entry" onSubmit={this.handleSubmit}>
           <p>
             <label>First Name:</label>
-            <input type= "text" name="firstName" value={this.state.firstName} onChange={this.handleChange}></input>
+            <input type= "text" name="firstName" value={this.state.input.firstName} onChange={this.handleChange}></input>
           </p>
           <p>
             <label>Last Name:</label>
-            <input type= "text"  name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
+            <input type= "text"  name="lastName" value={this.state.input.lastName} onChange={this.handleChange}></input>
           </p>
           <p>
             <label>Occupation:</label>
-            <input type= "text" name="occupation"  value={this.state.occupation} onChange={this.handleChange}></input>
+            <input type= "text" name="occupation"  value={this.state.input.occupation} onChange={this.handleChange}></input>
           </p>
           <p>
             <label>Age:</label>
-            <input type= "text"  name="age" value={this.state.age} onChange={this.handleChange}></input>
+            <input type= "text"  name="age" value={this.state.input.age} onChange={this.handleChange}></input>
           </p>
             <button type='submit'>Go</button>
         </form>
