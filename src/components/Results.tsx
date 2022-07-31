@@ -4,44 +4,23 @@ import Person from './Person';
 import axios from 'axios';
 // const axios = require('axios').default;
 
-const Results: React.FC = () => {
-    const [people, setPeople] = useState<Person[]>([])
-    const getAll = () => {
-        //make api call
-        //sample objects
-        // const samples: Person[] = [
-        //     {
-        //         firstName: 'Mason',
-        //         lastName: 'Heaman',
-        //         occupation: 'SWE',
-        //         age: '21'
-        //     },
-        //     {
-        //         firstName: 'Nicole',
-        //         lastName: 'Lynch',
-        //         occupation: 'Nail Tech',
-        //         age: '21'
-        //     }
-        // ];
-        axios.get('localhost:1337/api/people')
-            .then(response => {
-                alert(response)
-            })
-        // setPeople(samples)
-        return;
-    }
+interface Props {
+    people: Person[];
+}
+
+const Results: React.FC<Props> = ({people}) => {
   return (
     <div>
         <h2 className='result_header'>Results</h2>
-        <button onClick={() => getAll()}>Refresh</button>
-        <ul className='result_container'>
-            {people.map(person => {
+        {/* <button onClick={() => getAll()}>Refresh</button> */}
+        <div className='result_container'>
+            {people.map((person, index) => {
                 return(
-                    <li className='result'>{`${person.firstName} ${person.lastName}, ${person.age}, ${person.occupation}`}</li>
+                    <span className='result' key={index}>{`${person.firstName} ${person.lastName}, ${person.age}, ${person.occupation}`}</span>
             )})}
-        </ul>
+        </div>
     </div>
   )
 }
 
-export default Results
+export default Results;

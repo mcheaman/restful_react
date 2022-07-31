@@ -1,7 +1,7 @@
 import { PROPERTY_TYPES } from '@babel/types';
 import React, { Component } from 'react'
 import Person from './Person';
-
+import axios from 'axios';
 interface Props {
     
 }
@@ -36,16 +36,23 @@ export default class EnterForm extends React.Component<Props, State> {
         });
     }
     handleSubmit(e: React.FormEvent){
-        alert('A Person was submitted ' + JSON.stringify(this.state));
         e.preventDefault();
-        this.setState({
-          input: {
-            firstName: '',
-            lastName: '',
-            occupation: '',
-            age: '',
-          },
-      });
+        axios.post('http://localhost:1337/api/people', this.state.input)
+        .then(response => {
+              console.log(response);
+          })
+          .catch(err => {
+                alert(err.toString);
+          });
+            this.setState({
+              input: {
+                firstName: '',
+                lastName: '',
+                occupation: '',
+                age: '',
+              },
+          });
+
         //Make Api call
     }
   render() {

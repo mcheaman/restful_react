@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Results from './Results';
+import SearchForm from './SearchForm';
+import Person from './Person';
 import './styles.css';
 
 const Search = () => {
+  const [people, setPeople] = useState<Person[]>([])
+
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -21,7 +25,8 @@ const Search = () => {
           <button onClick={goHome}>Home</button>
           <button onClick={goEnter}>Enter</button>
         </div>
-        <Results/>
+        <SearchForm people={people} setPeople={setPeople}/>
+        <Results people={people}/>
     </div>
   )
 };
